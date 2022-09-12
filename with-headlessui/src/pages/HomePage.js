@@ -1,7 +1,24 @@
+import { LoremIpsum } from "lorem-ipsum";
+import React, { useMemo } from "react";
 import { Link, Outlet } from "react-router-dom";
-import React from "react";
 
 export const HomePage = () => {
+  const paragraphs = useMemo(() => {
+    const lorem = new LoremIpsum({
+      sentencesPerParagraph: {
+        max: 8,
+        min: 4,
+      },
+      wordsPerSentence: {
+        max: 16,
+        min: 4,
+      },
+    });
+    return Array.from({ length: 20 }, (_) =>
+      lorem.generateSentences(Math.floor(Math.random() * 10 + 1))
+    );
+  }, []);
+
   return (
     <>
       <h1 className="text-3xl font-bold underline">
@@ -18,6 +35,9 @@ export const HomePage = () => {
           <Link to={{ pathname: "/", search: "?register=true" }}>Register</Link>
         </li>
       </ul>
+      {paragraphs.map((p) => (
+        <p className="mb-4">{p}</p>
+      ))}
       <Outlet />
     </>
   );

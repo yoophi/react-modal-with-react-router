@@ -21,7 +21,10 @@ export const Login = () => {
     >
       <ul>
         <li>
-          <Link to={{ pathname: "/", search: "?login=true" }}>Login</Link>
+          <Link to={{ pathname: "/" }}>Home</Link>
+        </li>
+        <li>
+          <Link to={{ pathname: "/", search: "?login=true" }}>login</Link>
         </li>
         <li>
           <Link to={{ pathname: "/", search: "?register=true" }}>Register</Link>
