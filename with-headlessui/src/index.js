@@ -2,17 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
-import reportWebVitals from "./reportWebVitals";
-import { Login } from "./pages/Login";
+import { Dialogue } from "./pages/Dialogue";
 import { HomePage } from "./pages/HomePage";
 import { ProfilePage } from "./pages/ProfilePage";
+import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<HomePage />}>
-        <Route path="" element={<Login />} />
+        <Route path="" element={<Dialogue />} />
       </Route>
       <Route path="profile" element={<ProfilePage />} />
     </Routes>

@@ -7,11 +7,17 @@ export const HomePage = () => {
       <h1 className="text-3xl font-bold underline">
         <Link to="/">HomePage</Link>
       </h1>
-      <div>
-        <Link to="/profile">Go To Profile</Link>
-
-        <Link to={{ pathname: "/", search: "?login=true" }}>Login</Link>
-      </div>
+      <ul>
+        <li>
+          <Link to="/profile">Go To Profile</Link>
+        </li>
+        <li>
+          <Link to={{ pathname: "/", search: "?login=true" }}>Login</Link>
+        </li>
+        <li>
+          <Link to={{ pathname: "/", search: "?register=true" }}>Register</Link>
+        </li>
+      </ul>
       <Outlet />
     </>
   );

@@ -3,18 +3,18 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Modal } from "./Modal";
 import { Link } from "react-router-dom";
 
-export const Login = () => {
+export const Register = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [login, setLogin] = useState(null);
+  const [register, setRegister] = useState(null);
   useEffect(() => {
-    setLogin(new URLSearchParams(location.search).get("login"));
+    setRegister(new URLSearchParams(location.search).get("register"));
   }, [location]);
   return (
     <Modal
-      title="Login Modal"
+      title="Register Modal"
       description="This is a sample modal dialogue with Headless UI"
-      isOpen={!!login}
+      isOpen={!!register}
       onClose={() => {
         navigate(location.pathname);
       }}
@@ -27,7 +27,7 @@ export const Login = () => {
           <Link to={{ pathname: "/", search: "?register=true" }}>Register</Link>
         </li>
       </ul>
-      <pre>{JSON.stringify({ login }, null, 2)}</pre>
+      <pre>{JSON.stringify({ register }, null, 2)}</pre>
     </Modal>
   );
 };
