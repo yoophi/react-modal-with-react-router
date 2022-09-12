@@ -6,28 +6,32 @@ import { Link } from "react-router-dom";
 export const Register = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [register, setRegister] = useState(null);
+  const [isOpen, setIsOpen] = useState(null);
   useEffect(() => {
-    setRegister(new URLSearchParams(location.search).get("register"));
+    setIsOpen(
+      new URLSearchParams(location.search).get("dialogue") === "register"
+    );
   }, [location]);
   return (
     <Modal
       title="Register Modal"
       description="This is a sample modal dialogue with Headless UI"
-      isOpen={!!register}
+      isOpen={!!isOpen}
       onClose={() => {
         navigate(location.pathname);
       }}
     >
       <ul>
         <li>
-          <Link to={{ pathname: "/", search: "?login=true" }}>Login</Link>
+          <Link to={{ pathname: "/", search: "?dialogue=login" }}>Login</Link>
         </li>
         <li>
-          <Link to={{ pathname: "/", search: "?register=true" }}>Register</Link>
+          <Link to={{ pathname: "/", search: "?dialogue=register" }}>
+            Register
+          </Link>
         </li>
       </ul>
-      <pre>{JSON.stringify({ register }, null, 2)}</pre>
+      <pre>{JSON.stringify({ register: isOpen }, null, 2)}</pre>
     </Modal>
   );
 };

@@ -29,10 +29,12 @@ export const HomePage = () => {
           <Link to="/profile">Go To Profile</Link>
         </li>
         <li>
-          <Link to={{ pathname: "/", search: "?login=true" }}>Login</Link>
+          <Link to={{ pathname: "/", search: "?dialogue=login" }}>Login</Link>
         </li>
         <li>
-          <Link to={{ pathname: "/", search: "?register=true" }}>Register</Link>
+          <Link to={{ pathname: "/", search: "?dialogue=register" }}>
+            Register
+          </Link>
         </li>
       </ul>
       {paragraphs.map((p) => (

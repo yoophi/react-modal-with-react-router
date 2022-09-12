@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 export const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [login, setLogin] = useState(null);
+  const [isOpen, setIsOpen] = useState(null);
   useEffect(() => {
-    setLogin(new URLSearchParams(location.search).get("login"));
+    setIsOpen(new URLSearchParams(location.search).get("dialogue") === "login");
   }, [location]);
   return (
     <Modal
       title="Login Modal"
       description="This is a sample modal dialogue with Headless UI"
-      isOpen={!!login}
+      isOpen={!!isOpen}
       onClose={() => {
         navigate(location.pathname);
       }}
@@ -24,13 +24,20 @@ export const Login = () => {
           <Link to={{ pathname: "/" }}>Home</Link>
         </li>
         <li>
-          <Link to={{ pathname: "/", search: "?login=true" }}>login</Link>
+          <Link to={{ pathname: "/", search: "?dialogue=login" }}>login</Link>
         </li>
         <li>
-          <Link to={{ pathname: "/", search: "?register=true" }}>Register</Link>
+          <Link to={{ pathname: "/profile", search: "?dialogue=login" }}>
+            profile/login
+          </Link>
+        </li>
+        <li>
+          <Link to={{ pathname: "/", search: "?dialogue=register" }}>
+            Register
+          </Link>
         </li>
       </ul>
-      <pre>{JSON.stringify({ login }, null, 2)}</pre>
+      <pre>{JSON.stringify({ login: isOpen }, null, 2)}</pre>
     </Modal>
   );
 };

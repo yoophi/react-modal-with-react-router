@@ -1,20 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import "./index.css";
 import { Dialogue } from "./pages/Dialogue";
 import { HomePage } from "./pages/HomePage";
 import { ProfilePage } from "./pages/ProfilePage";
 import reportWebVitals from "./reportWebVitals";
 
+const Layout = () => {
+  return (
+    <>
+      <h1>Layout</h1>
+      <Outlet />
+      <Dialogue />
+    </>
+  );
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<HomePage />}>
-        <Route path="" element={<Dialogue />} />
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="profile" element={<ProfilePage />} />
       </Route>
-      <Route path="profile" element={<ProfilePage />} />
     </Routes>
   </BrowserRouter>
 );
